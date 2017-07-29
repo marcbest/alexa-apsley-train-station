@@ -1,0 +1,11 @@
+{
+  "name": "national-rail-apsley-alexa-api",
+  "version": "1.0.0",
+  "description": "An Alexa skill for retrieving information about departures from Apsley train station",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marc Best",
+  "license": "ISC"
+}
