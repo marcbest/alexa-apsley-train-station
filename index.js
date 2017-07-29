@@ -6,8 +6,8 @@ var client = new Rail(process.env.DARWIN_TOKEN);
 
 var APP_ID = process.env.APP_ID;
 
-var SKILL_NAME = "Apsley Station Info";
-var GET_FACT_MESSAGE = "Here's your fact: ";
+var SKILL_NAME = "Apsley Train Station Information";
+var LAUNCH_MESSAGE = "Welcone to Apsley train station information, ask when the next train to london or home is, how can I help?"
 var HELP_MESSAGE = "Aplsey train station information, ask me when the next train to London is or if there are delays... What can I help you with?";
 var HELP_REPROMPT = "What can I help you with?";
 var STOP_MESSAGE = "Bye!";
@@ -23,7 +23,7 @@ exports.handler = function(event, context, callback) {
 
 var handlers = {
     'LaunchRequest': function () {
-        this.emit(':tell', 'Welcome to Aplsey Train Station Information!');
+        this.emit(':ask', LAUNCH_MESSAGE, HELP_REPROMPT);
     },
     'NextTrainToEuston': function () {
         var self = this;
@@ -48,9 +48,7 @@ var handlers = {
         });
     },
     'AMAZON.HelpIntent': function () {
-        var speechOutput = HELP_MESSAGE;
-        var reprompt = HELP_REPROMPT;
-        this.emit(':ask', speechOutput, reprompt);
+        this.emit(':ask', HELP_MESSAGE, HELP_REPROMPT);
     },
     'AMAZON.CancelIntent': function () {
         this.emit(':tell', STOP_MESSAGE);
